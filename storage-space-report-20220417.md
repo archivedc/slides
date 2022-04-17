@@ -37,7 +37,7 @@ Archive Data Center Project, 2022-04-17
 ---
 
 ## Per Genre Storage Space
-- Illusts: **Unable to calculate**
+- Illusts: 175GiB
 - Videos: 11TiB
 - Novels: 2.89GiB
 - TV Shows: 567GiB
