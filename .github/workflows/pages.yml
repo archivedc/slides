@@ -1,0 +1,25 @@
+name: Publish GitHub pages
+on:
+  push:
+    branches:
+      - "main"
+  workflow_dispatch:
+
+jobs:
+  publish:
+    name: publish
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Create export
+        run: mkdir ./public && chmod 777 -R ./public
+      - name: Generate HTML
+        uses: docker://marpteam/marp-cli:v0.17.0
+        with:
+          args: "--workdir /github/workspace --input-dir . --output public --html --allow-local-files"
+      - name: GitHub pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
+          publish_branch: gh-pages
